@@ -76,8 +76,8 @@ const Onboard = (props: { done: () => void }) => {
           style={{ position: 'relative', marginBottom: 40, marginTop: 52, alignItems: 'center' }}
         >
           <DotRow>
-            {[0, 1, 2].map((_, i) => (
-              <Dot active={i === page} />
+            {Array(3).map((_, i) => (
+              <Dot active={i === page} key={i} />
             ))}
           </DotRow>
           <Button

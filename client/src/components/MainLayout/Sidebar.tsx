@@ -21,14 +21,6 @@ const Wrapper = styled(View)<{ open: boolean }>`
   transition: transform 0.3s ease;
 `
 
-// const Logo = styled(Image)`
-//   width: 27px;
-//   height: 36px;
-//   position: absolute;
-//   top: 50px;
-//   right: 60px;
-// `
-
 interface SidebarProps {
   open: boolean
 }
@@ -39,7 +31,7 @@ const Sidebar = ({ open }: SidebarProps) => (
       {/* <Logo source={{ uri: logoSmall }} /> */}
     </Link>
     <View style={{ marginRight: 40 }}>
-      <SidebarItem to="/" active icon={dashbaordIcon}>
+      <SidebarItem to="/" active="true" icon={dashbaordIcon}>
         Dashboard
       </SidebarItem>
       <SidebarItem to="/settings" icon={settingsIcon}>

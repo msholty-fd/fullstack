@@ -37,7 +37,7 @@
     "react-router-native": "^5.0.0",
     "react-scripts": "3.0.0",
     "react-spring": "^8.0.21",
-    "styled-components": "^4.2.1"
+    "styled-components": "4.3.1"
   },
   "devDependencies": {
     "@graphql-codegen/cli": "^1.2.0",
@@ -62,7 +62,7 @@
     "ts-jest": "24.0.2",
     "tslint": "5.16.0",
     "tslint-config-prettier": "1.18.0",
-    "typescript": "3.4.5"
+    "typescript": "3.5.2"
   },
   "babel": {
     "presets": [

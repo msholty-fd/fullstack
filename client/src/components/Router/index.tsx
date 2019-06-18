@@ -8,10 +8,11 @@ import { useUserContext } from '../../screens/Login/UserContext'
 export default () => {
   const { userState, getUser } = useUserContext()
 
+  const userId = userState.user && userState.user.id
+
   React.useEffect(() => {
     getUser()
-    return () => {}
-  }, [userState.user && userState.user.id])
+  }, [userId])
 
   if (!userState.user && userState.loggingIn) {
     return null
@@ -26,7 +27,6 @@ export default () => {
             render={() => (
               <Switch>
                 <Route path="/" exact component={Home} />
-                {/* <Route path="/policies" component={Policies} /> */}
                 <Route path="*" render={() => <Redirect to="/" />} />
               </Switch>
             )}

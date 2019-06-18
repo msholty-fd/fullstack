@@ -8,7 +8,11 @@ const Wrapper = styled(View)`
   align-items: center;
 `
 
-const Label = styled(Text)<{ active?: boolean }>`
+interface ILabelProps {
+  active?: string
+}
+
+const Label = styled(Text)<ILabelProps>`
   font-family: AvantGardePro;
   padding-left: 22px;
   font-weight: 500;
@@ -22,7 +26,7 @@ interface SidebarItemProps {
   children: string
   icon: string
   to: string
-  active?: boolean
+  active?: string
 }
 
 const SidebarItem = ({ children, active, to, icon }: SidebarItemProps) => (

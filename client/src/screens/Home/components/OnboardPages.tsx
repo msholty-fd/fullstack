@@ -104,11 +104,11 @@ const OnboardPages = ({
       {transitions.map(({ item, props }) => {
         switch (item) {
           case 0:
-            return <AddressPage setSelectedItem={setSelectedItem} style={props} />
+            return <AddressPage setSelectedItem={setSelectedItem} style={props} key={0} />
           case 1:
-            return <RentAmountPage value={rent} onChangeText={setRent} style={props} />
+            return <RentAmountPage value={rent} onChangeText={setRent} style={props} key={1} />
           case 2:
-            return <ConnectBankPage style={props} setPublicToken={setPublicToken} />
+            return <ConnectBankPage style={props} setPublicToken={setPublicToken} key={2} />
           default:
             return null
         }

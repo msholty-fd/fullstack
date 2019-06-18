@@ -68,14 +68,22 @@ export interface MapsPrediction {
   place_id: string
 }
 
-interface AddressAutofillInputProps {
+interface IProps {
   setSelectedItem: (item: MapsPrediction | null) => void
 }
 
-class AddressAutofillInput extends React.Component<AddressAutofillInputProps> {
+interface IState {
+  address: string
+  inputFocused: boolean
+  predictions: MapsPrediction[]
+  selectedItem: number | null
+  propertyId: string
+}
+
+class AddressAutofillInput extends React.Component<IProps, IState> {
   autocomplete: any
 
-  state = {
+  state: IState = {
     address: '',
     inputFocused: false,
     predictions: [] as MapsPrediction[],
@@ -120,7 +128,7 @@ class AddressAutofillInput extends React.Component<AddressAutofillInputProps> {
     this.props.setSelectedItem(null)
     this.autocomplete.getQueryPredictions(
       { input: text },
-      (predictions: MapsPrediction, status: string) => {
+      (predictions: MapsPrediction[], status: string) => {
         if (status === 'OK') {
           this.setState({ predictions })
         }
@@ -160,7 +168,7 @@ class AddressAutofillInput extends React.Component<AddressAutofillInputProps> {
                   <PreditionText>{p.description}</PreditionText>
                 </PredictionTextRow>
               ))}
-              <View style={{ marginTop: 7, marginBottom: 5, textAlign: 'center' }}>
+              <View style={{ marginTop: 7, marginBottom: 5 }}>
                 <Text style={{ color: 'var(--gray)' }}>
                   Powered by <GoogleLogo source={{ uri: googleLogo }} />
                 </Text>

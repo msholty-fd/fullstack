@@ -2,12 +2,14 @@ import * as React from 'react'
 import { View, Text, TextInput, TextInputProps } from 'react-native'
 import styled, { css } from 'styled-components'
 
-const Base = styled(TextInput)<{
+interface IProps {
   name?: string
-  focused?: boolean
+  focused?: string
   focusable?: boolean
-  innerRef: any
-}>`
+  ref: React.Ref<TextInput>
+}
+
+const Base = styled(TextInput)<IProps>`
   font-family: AvantGardePro;
   background: var(--white);
   padding: 12px 20px;
@@ -39,29 +41,27 @@ const Label = styled(Text)`
   letter-spacing: -0.61px;
 `
 
-interface InputProps extends TextInputProps {
+interface InputProps extends TextInputProps, IProps {
   style?: any
   inputStyle?: any
-  name?: string
   label?: string
   secure?: boolean
-  focusable?: boolean
 }
 
-const Input = React.forwardRef(
-  ({ style, inputStyle, name, label, secure, focusable, ...props }: InputProps, ref) => {
+const Input = React.forwardRef<TextInput, InputProps>(
+  ({ style, inputStyle, name, label, secure, focusable, ...props }, ref) => {
     const [focused, setFocused] = React.useState(false)
     return (
       <View style={style}>
         {label && <Label>{label}</Label>}
         <Base
           {...props}
-          innerRef={ref}
-          style={inputStyle}
           name={name}
+          ref={ref}
+          style={inputStyle}
           placeholderTextColor="var(--dark-moderate-blue-30)"
           secureTextEntry={secure}
-          focused={focused}
+          focused={focused.toString()}
           focusable={focusable}
           onFocus={e => {
             setFocused(true)

@@ -6,6 +6,6 @@ export const useIsLandlord = (location: H.Location) => {
   React.useEffect(() => {
     set(location.pathname.indexOf('/landlord') !== -1)
     return () => {}
-  })
+  }, [location.pathname])
   return isLandlord
 }
